@@ -125,6 +125,8 @@ fn main() {
         turn += 1;
     }
     println!("Total turns: {}", turn);
+    println!("closing in 5 seconds");
+    thread::sleep(Duration::from_secs(6));
 }
 
 // create vector to show movements of 1 on zeroes
@@ -146,7 +148,7 @@ fn get_step_count() -> usize {
 fn move_steps_pawn(vec: &mut Vec<u8>, steps: usize, moved: &mut u8, cur_pos: &mut usize, player_name: String) {
     if steps + *cur_pos < vec.len() {
         for i in 0..steps {
-            thread::sleep(Duration::from_millis(10));
+            thread::sleep(Duration::from_millis(500));
             let clr: String = "\x1B[2J\x1B[1;1H".to_string();
             println!("{}", clr);
             let pos = vec.iter().position(|&x| x == 1).expect("1 not found");
